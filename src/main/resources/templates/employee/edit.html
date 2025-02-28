@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Редактировать сотрудника</title>
+</head>
+<body>
+<h1>Редактировать сотрудника</h1>
+<form action="#" th:action="@{/employees/update}" th:object="${employee}" method="post">
+    <input type="hidden" th:field="*{id}" /> <!-- Скрытое поле для ID сотрудника -->
+
+    <label for="fullName">ФИО:</label>
+    <input type="text" id="fullName" th:field="*{fullName}" required /><br/>
+
+    <label for="gender">Пол:</label>
+    <select id="gender" th:field="*{gender}">
+        <option value="М" th:selected="${employee.gender == 'М'}">Мужской</option>
+        <option value="Ж" th:selected="${employee.gender == 'Ж'}">Женский</option>
+    </select><br/>
+
+    <label for="birthYear">Год рождения:</label>
+    <input type="number" id="birthYear" th:field="*{birthYear}" required /><br/>
+
+    <label for="departmentId">Подразделение:</label>
+    <select id="departmentId" th:field="*{departmentId}">
+        <option th:each="department : ${departments}"
+                th:value="${department.id}"
+                th:text="${department.name}"
+                th:selected="${department.id == employee.departmentId}"></option>
+    </select><br/>
+
+    <label for="positionId">Должность:</label>
+    <select id="positionId" th:field="*{positionId}">
+        <option th:each="position : ${positions}"
+                th:value="${position.id}"
+                th:text="${position.name}"
+                th:selected="${position.id == employee.positionId}"></option>
+    </select><br/>
+
+    <button type="submit">Обновить</button>
+    <a href="/employees">Отмена</a>
+</form>
+</body>
+</html>
