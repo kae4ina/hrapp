@@ -17,14 +17,14 @@ public class DataInitializer {
 
     @PostConstruct
     public void init() {
-        // Добавление департаментов
+
         if (departmentRepository.count() == 0) {
             departmentRepository.save(new Department("Отдел разработки"));
             departmentRepository.save(new Department("Отдел тестирования"));
             departmentRepository.save(new Department("Отдел маркетинга"));
         }
 
-        // Добавление позиций
+
         if (positionRepository.count() == 0) {
             positionRepository.save(new Position("Разработчик"));
             positionRepository.save(new Position("Тестировщик"));

@@ -41,7 +41,7 @@ public class EmployeeController {
         model.addAttribute("employees", employeeService.getAllEmployees());
         model.addAttribute("departments", departmentService.getAllDepartments());
         model.addAttribute("positions", positionService.getAllPositions());
-        return "employee/list"; // HTML-шаблон для отображения списка сотрудников
+        return "employee/list";
     }
 
     @GetMapping("/add")
@@ -49,13 +49,13 @@ public class EmployeeController {
         model.addAttribute("employee", new Employee());
         model.addAttribute("departments", departmentService.getAllDepartments());
         model.addAttribute("positions", positionService.getAllPositions());
-        return "employee/add"; // HTML-шаблон для формы добавления сотрудника
+        return "employee/add";
     }
 
     @PostMapping("/save")
     public String saveEmployee(@ModelAttribute Employee employee) {
         employeeService.saveEmployee(employee);
-        return "redirect:/employee"; // Перенаправление на список сотрудников
+        return "redirect:/employee";
     }
 
     @GetMapping("/edit/{id}")
@@ -76,7 +76,7 @@ public class EmployeeController {
     @GetMapping("/delete/{id}")
     public String deleteEmployee(@PathVariable Long id) {
         employeeService.deleteEmployee(id);
-        return "redirect:/employee"; // Перенаправление на список сотрудников
+        return "redirect:/employee";
     }
     @ModelAttribute("departments")
     public List<Department> populateDepartments() {
