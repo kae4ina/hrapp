@@ -20,8 +20,8 @@
         <td th:text="${employee.gender}"></td>
         <td th:text="${employee.birthYear}"></td>
         <td>
-            <a th:href="@{/employees/edit/{id}(id=${employee.id})}">Редактировать</a>
-            <a th:href="@{/employees/delete/{id}(id=${employee.id})}">Удалить</a>
+            <a th:href="@{/employee/edit/{id}(id=${employee.id})}">Редактировать</a>
+            <a th:href="@{/employee/delete/{id}(id=${employee.id})}">Удалить</a>
         </td>
     </tr>
 </table>

@@ -2,7 +2,9 @@ package com.example.employee_management.controller;
 
 
 
+import com.example.employee_management.models.Department;
 import com.example.employee_management.models.Employee;
+import com.example.employee_management.models.Position;
 import com.example.employee_management.service.DepartmentService;
 import com.example.employee_management.service.EmployeeService;
 import com.example.employee_management.service.EmploymentDetailsService;
@@ -62,19 +64,28 @@ public class EmployeeController {
         model.addAttribute("employee", employee);
         model.addAttribute("departments", departmentService.getAllDepartments());
         model.addAttribute("positions", positionService.getAllPositions());
-        return "employee/edit"; // HTML-шаблон для редактирования сотрудника
+        return "employee/edit";
     }
 
     @PostMapping("/update")
     public String updateEmployee(@ModelAttribute Employee employee) {
         employeeService.saveEmployee(employee);
-        return "redirect:/employees"; // Перенаправление на список сотрудников
+        return "redirect:/employee";
     }
 
     @GetMapping("/delete/{id}")
     public String deleteEmployee(@PathVariable Long id) {
         employeeService.deleteEmployee(id);
         return "redirect:/employees"; // Перенаправление на список сотрудников
+    }
+    @ModelAttribute("departments")
+    public List<Department> populateDepartments() {
+        return departmentService.getAllDepartments();
+    }
+
+    @ModelAttribute("positions")
+    public List<Position> populatePositions() {
+        return positionService.getAllPositions();
     }
 }
 

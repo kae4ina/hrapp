@@ -5,7 +5,7 @@
 </head>
 <body>
 <h1>Редактировать сотрудника</h1>
-<form action="#" th:action="@{/employees/update}" th:object="${employee}" method="post">
+<form action="#" th:action="@{/employee/update}" th:object="${employee}" method="post">
     <input type="hidden" th:field="*{id}" /> <!-- Скрытое поле для ID сотрудника -->
 
     <label for="fullName">ФИО:</label>
@@ -20,24 +20,24 @@
     <label for="birthYear">Год рождения:</label>
     <input type="number" id="birthYear" th:field="*{birthYear}" required /><br/>
 
-    <label for="departmentId">Подразделение:</label>
-    <select id="departmentId" th:field="*{departmentId}">
+    <label for="department">Подразделение:</label>
+    <select id="department" th:field="*{department}">
         <option th:each="department : ${departments}"
                 th:value="${department.id}"
                 th:text="${department.name}"
-                th:selected="${department.id == employee.departmentId}"></option>
+                th:selected="${department.id == employee.department.id}"></option>
     </select><br/>
 
-    <label for="positionId">Должность:</label>
-    <select id="positionId" th:field="*{positionId}">
+    <label for="position">Должность:</label>
+    <select id="position" th:field="*{position}">
         <option th:each="position : ${positions}"
                 th:value="${position.id}"
                 th:text="${position.name}"
-                th:selected="${position.id == employee.positionId}"></option>
+                th:selected="${position.id == employee.position.id}"></option>
     </select><br/>
 
     <button type="submit">Обновить</button>
-    <a href="/employees">Отмена</a>
+    <a href="/employee">Отмена</a>
 </form>
 </body>
 </html>

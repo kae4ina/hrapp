@@ -50,4 +50,14 @@ public class Employee {
     public void setBirthYear(int birthYear) {
         this.birthYear = birthYear;
     }
+    public Position getPosition(){return this.position;}
+    public void setPosition(Position position){this.position=position;}
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
 }
