@@ -2,6 +2,75 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Список сотрудников</title>
+    <style>
+        /* Основные стили для таблицы */
+        table {
+            width: 100%; /* Таблица занимает всю доступную ширину */
+            border-collapse: collapse; /* Убираем двойные границы */
+            margin: 20px 0; /* Отступы сверху и снизу */
+            font-family: Arial, sans-serif; /* Шрифт */
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Тень для таблицы */
+        }
+
+        /* Стили для заголовков таблицы */
+        th {
+            background-color: #4CAF50; /* Зеленый фон */
+            color: white; /* Белый текст */
+            padding: 15px; /* Внутренние отступы */
+            text-align: left; /* Выравнивание текста по левому краю */
+        }
+
+        /* Закругленные углы для заголовков */
+        th:first-child {
+            border-top-left-radius: 10px;
+        }
+
+        th:last-child {
+            border-top-right-radius: 10px;
+        }
+
+        /* Стили для ячеек таблицы */
+        td {
+            padding: 12px; /* Внутренние отступы */
+            border-bottom: 1px solid #ddd; /* Граница снизу */
+        }
+
+        /* Стили для строк таблицы при наведении */
+        tr:hover {
+            background-color: #f5f5f5; /* Серый фон при наведении */
+            transition: background-color 0.3s ease; /* Анимация при наведении */
+        }
+
+        /* Стили для кнопок действий */
+        .actions a {
+            margin-right: 10px; /* Отступ между кнопками */
+            text-decoration: none; /* Убираем подчеркивание */
+
+        }
+
+
+        /* Стили для заголовка страницы */
+        h1 {
+            color: #333; /* Темно-серый цвет текста */
+            font-family: Arial, sans-serif;
+        }
+
+        /* Стили для ссылки "Добавить сотрудника" */
+        a {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+        }
+
+        a:hover {
+            background-color: #45a049; /* Темно-зеленый цвет при наведении */
+        }
+    </style>
 </head>
 <body>
 <h1>Список сотрудников</h1>
@@ -12,6 +81,8 @@
         <th>ФИО</th>
         <th>Пол</th>
         <th>Год рождения</th>
+        <th>Подразделение</th>
+        <th>Должность</th>
         <th>Действия</th>
     </tr>
     <tr th:each="employee : ${employees}">
@@ -19,7 +90,9 @@
         <td th:text="${employee.fullName}"></td>
         <td th:text="${employee.gender}"></td>
         <td th:text="${employee.birthYear}"></td>
-        <td>
+        <td th:text="${employee.department.name}"></td>
+        <td th:text="${employee.position.name}"></td>
+        <td class="actions">
             <a th:href="@{/employee/edit/{id}(id=${employee.id})}">Редактировать</a>
             <a th:href="@{/employee/delete/{id}(id=${employee.id})}">Удалить</a>
         </td>

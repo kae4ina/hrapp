@@ -55,7 +55,7 @@ public class EmployeeController {
     @PostMapping("/save")
     public String saveEmployee(@ModelAttribute Employee employee) {
         employeeService.saveEmployee(employee);
-        return "redirect:/employees"; // Перенаправление на список сотрудников
+        return "redirect:/employee"; // Перенаправление на список сотрудников
     }
 
     @GetMapping("/edit/{id}")
@@ -76,7 +76,7 @@ public class EmployeeController {
     @GetMapping("/delete/{id}")
     public String deleteEmployee(@PathVariable Long id) {
         employeeService.deleteEmployee(id);
-        return "redirect:/employees"; // Перенаправление на список сотрудников
+        return "redirect:/employee"; // Перенаправление на список сотрудников
     }
     @ModelAttribute("departments")
     public List<Department> populateDepartments() {

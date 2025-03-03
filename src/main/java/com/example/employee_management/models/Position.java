@@ -11,6 +11,13 @@ public class Position {
     private Long id;
     private String name;
 
+    public Position (String name){
+        this.name=name;
+    }
+    public Position(){
+        this.name="None";
+    }
+
     // Геттеры и сеттеры
     public Long getId() {
         return id;

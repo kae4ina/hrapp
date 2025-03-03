@@ -12,6 +12,12 @@ public class Department {
     private Long id;
     private String name;
 
+    public Department(String name) {
+        this.name=name;
+    }
+    public Department(){
+        this.name="None";
+    }
     // Геттеры и сеттеры
     public Long getId() {
         return id;
